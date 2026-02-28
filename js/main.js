@@ -7,17 +7,12 @@
 const lenis = new Lenis({
   duration: 1.2,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  smooth: true,
 });
 
-function raf(time) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
-requestAnimationFrame(raf);
-
-// Connect GSAP ScrollTrigger with Lenis
-lenis.on('scroll', ScrollTrigger.update);
+// Use GSAP ticker as the single RAF source for Lenis — do NOT also use a
+// separate requestAnimationFrame loop, as that would tick Lenis twice per
+// frame and break mouse-wheel scrolling.
+lenis.on('scroll', () => ScrollTrigger.update());
 gsap.ticker.add((time) => { lenis.raf(time * 1000); });
 gsap.ticker.lagSmoothing(0);
 
@@ -58,16 +53,23 @@ const mobileMenu = document.getElementById('mobile-menu');
 const mobileLinks = mobileMenu.querySelectorAll('a');
 
 hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  mobileMenu.classList.toggle('open');
-  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburger.classList.toggle('active', isOpen);
+  hamburger.setAttribute('aria-expanded', String(isOpen));
+  // Stop/start Lenis so the page doesn't scroll behind the mobile overlay
+  if (isOpen) {
+    lenis.stop();
+  } else {
+    lenis.start();
+  }
 });
 
 mobileLinks.forEach(link => {
   link.addEventListener('click', () => {
     hamburger.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
     mobileMenu.classList.remove('open');
-    document.body.style.overflow = '';
+    lenis.start();
   });
 });
 
