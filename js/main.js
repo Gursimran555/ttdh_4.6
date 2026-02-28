@@ -4,14 +4,20 @@
    ===================================================== */
 
 /* ── Lenis Smooth Scroll ───────────────────────────── */
+// Improved physics: expo.out easing = faster initial response,
+// ultra-smooth deceleration — the premium feel for high-ticket sites.
+const expoOut = (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
 const lenis = new Lenis({
-  duration: 1.2,
-  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  duration: 1.1,
+  easing: expoOut,
+  orientation: 'vertical',
+  gestureOrientation: 'vertical',
+  smoothWheel: true,
+  wheelMultiplier: 0.92,
+  touchInertiaMultiplier: 22,
 });
 
-// Use GSAP ticker as the single RAF source for Lenis — do NOT also use a
-// separate requestAnimationFrame loop, as that would tick Lenis twice per
-// frame and break mouse-wheel scrolling.
+// Use GSAP ticker as the single RAF source for Lenis
 lenis.on('scroll', () => ScrollTrigger.update());
 gsap.ticker.add((time) => { lenis.raf(time * 1000); });
 gsap.ticker.lagSmoothing(0);
@@ -27,8 +33,8 @@ document.addEventListener('mousemove', (e) => {
 });
 
 function animateGlow() {
-  currentX += (mouseX - currentX) * 0.08;
-  currentY += (mouseY - currentY) * 0.08;
+  currentX += (mouseX - currentX) * 0.07;
+  currentY += (mouseY - currentY) * 0.07;
   if (mouseGlow) {
     mouseGlow.style.left = currentX + 'px';
     mouseGlow.style.top = currentY + 'px';
@@ -56,7 +62,6 @@ hamburger.addEventListener('click', () => {
   const isOpen = mobileMenu.classList.toggle('open');
   hamburger.classList.toggle('active', isOpen);
   hamburger.setAttribute('aria-expanded', String(isOpen));
-  // Stop/start Lenis so the page doesn't scroll behind the mobile overlay
   if (isOpen) {
     lenis.stop();
   } else {
@@ -77,32 +82,31 @@ mobileLinks.forEach(link => {
 if (typeof particlesJS !== 'undefined') {
   particlesJS('particles-js', {
     particles: {
-      number: { value: 55, density: { enable: true, value_area: 900 } },
-      color: { value: ['#4f46e5', '#7c3aed', '#6366f1'] },
+      number: { value: 45, density: { enable: true, value_area: 900 } },
+      color: { value: ['#1d4ed8', '#6d28d9', '#60a5fa'] },
       shape: { type: 'circle' },
-      opacity: { value: 0.45, random: true, anim: { enable: true, speed: 0.8, opacity_min: 0.1, sync: false } },
-      size: { value: 2.5, random: true, anim: { enable: false } },
-      line_linked: { enable: true, distance: 150, color: '#4f46e5', opacity: 0.18, width: 1 },
-      move: { enable: true, speed: 1.2, direction: 'none', random: true, straight: false, out_mode: 'out', bounce: false }
+      opacity: { value: 0.35, random: true, anim: { enable: true, speed: 0.6, opacity_min: 0.08, sync: false } },
+      size: { value: 2, random: true, anim: { enable: false } },
+      line_linked: { enable: true, distance: 160, color: '#1d4ed8', opacity: 0.12, width: 1 },
+      move: { enable: true, speed: 0.9, direction: 'none', random: true, straight: false, out_mode: 'out', bounce: false }
     },
     interactivity: {
       detect_on: 'canvas',
       events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: false }, resize: true },
-      modes: { grab: { distance: 180, line_linked: { opacity: 0.4 } } }
+      modes: { grab: { distance: 200, line_linked: { opacity: 0.35 } } }
     },
     retina_detect: true
   });
 }
 
 /* ── Nav Entrance Animation ─────────────────────────── */
-// Mark hero elements as hidden — JS controls their reveal
-document.querySelectorAll('.hero-badge, .hero-headline, .hero-sub, .hero-ctas').forEach(el => {
+document.querySelectorAll('.hero-badge, .hero-headline, .hero-sub, .hero-ctas, .hero-trust').forEach(el => {
   el.classList.add('js-hidden');
 });
 
 gsap.fromTo('#navbar',
   { y: -80, opacity: 0 },
-  { y: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: 0.2 }
+  { y: 0, opacity: 1, duration: 1.1, ease: 'expo.out', delay: 0.2 }
 );
 
 /* ── Hero Staggered Word Animation ─────────────────── */
@@ -113,42 +117,38 @@ function splitAndAnimate() {
   const words = text.split(' ');
   headline.innerHTML = words.map(w => `<span class="word" style="display:inline-block; overflow:hidden; vertical-align:top;"><span class="word-inner" style="display:inline-block; transform:translateY(110%);">${w}</span></span>`).join(' ');
 
-  // Remove hidden class now that GSAP is controlling it
   headline.classList.remove('js-hidden');
   gsap.set(headline, { opacity: 0 });
 
   const wordInners = headline.querySelectorAll('.word-inner');
-  const tl = gsap.timeline({ delay: 0.4 });
+  const tl = gsap.timeline({ delay: 0.45 });
   tl.to(headline, { opacity: 1, duration: 0 })
     .to(wordInners, {
       y: '0%',
-      duration: 0.7,
-      stagger: 0.07,
-      ease: 'power3.out'
+      duration: 0.9,
+      stagger: 0.055,
+      ease: 'expo.out'
     });
 }
 splitAndAnimate();
 
-/* Hero badge, sub, cta fade ins */
-['.hero-badge', '.hero-sub', '.hero-ctas'].forEach(sel => {
+/* Hero badge, sub, cta, trust fade-ins */
+[['.hero-badge', 0], ['.hero-sub', 0.9], ['.hero-ctas', 1.15], ['.hero-trust', 1.35]].forEach(([sel, delay]) => {
   const el = document.querySelector(sel);
   if (el) {
     el.classList.remove('js-hidden');
-    gsap.set(el, { opacity: 0, y: 20 });
+    gsap.set(el, { opacity: 0, y: 22 });
+    gsap.to(el, { opacity: 1, y: 0, duration: 0.85, ease: 'expo.out', delay });
   }
 });
-gsap.timeline({ delay: 0.3 })
-  .to('.hero-badge', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0)
-  .to('.hero-sub', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, 0.85)
-  .to('.hero-ctas', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 1.1);
 
 gsap.from('.float-card', {
   opacity: 0,
-  x: 60,
-  duration: 0.8,
-  stagger: 0.2,
-  ease: 'power3.out',
-  delay: 1.4
+  x: 70,
+  duration: 1.0,
+  stagger: 0.18,
+  ease: 'expo.out',
+  delay: 1.5
 });
 
 /* ── Magnetic Buttons ───────────────────────────────── */
@@ -157,58 +157,58 @@ document.querySelectorAll('.magnetic').forEach(btn => {
     const rect = btn.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
-    gsap.to(btn, { x: x * 0.3, y: y * 0.3, duration: 0.3, ease: 'power2.out' });
+    gsap.to(btn, { x: x * 0.28, y: y * 0.28, duration: 0.35, ease: 'power2.out' });
   });
   btn.addEventListener('mouseleave', () => {
-    gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.5)' });
+    gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.55)' });
   });
 });
 
 /* ── Vanilla Tilt on Service Cards ─────────────────── */
 if (typeof VanillaTilt !== 'undefined') {
   VanillaTilt.init(document.querySelectorAll('.service-card'), {
-    max: 10,
-    speed: 400,
+    max: 8,
+    speed: 500,
     glare: true,
-    'max-glare': 0.12,
-    scale: 1.02,
+    'max-glare': 0.08,
+    scale: 1.015,
   });
 }
 
 /* ── GSAP ScrollTrigger Reveal Animations ────────────── */
-// Generic reveal
+// Generic reveals — use expo.out for premium, silky deceleration
 gsap.utils.toArray('.reveal').forEach(el => {
   gsap.fromTo(el,
-    { opacity: 0, y: 50 },
+    { opacity: 0, y: 55 },
     {
       opacity: 1, y: 0,
-      duration: 0.8,
-      ease: 'power3.out',
-      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+      duration: 1.0,
+      ease: 'expo.out',
+      scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
     }
   );
 });
 
 gsap.utils.toArray('.reveal-left').forEach(el => {
   gsap.fromTo(el,
-    { opacity: 0, x: -50 },
+    { opacity: 0, x: -55 },
     {
       opacity: 1, x: 0,
-      duration: 0.8,
-      ease: 'power3.out',
-      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+      duration: 1.0,
+      ease: 'expo.out',
+      scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
     }
   );
 });
 
 gsap.utils.toArray('.reveal-right').forEach(el => {
   gsap.fromTo(el,
-    { opacity: 0, x: 50 },
+    { opacity: 0, x: 55 },
     {
       opacity: 1, x: 0,
-      duration: 0.8,
-      ease: 'power3.out',
-      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+      duration: 1.0,
+      ease: 'expo.out',
+      scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
     }
   );
 });
@@ -216,59 +216,59 @@ gsap.utils.toArray('.reveal-right').forEach(el => {
 /* Section Headers */
 gsap.utils.toArray('.section-header').forEach(el => {
   gsap.fromTo(el,
-    { opacity: 0, y: 40 },
+    { opacity: 0, y: 45 },
     {
-      opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
-      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+      opacity: 1, y: 0, duration: 1.1, ease: 'expo.out',
+      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
     }
   );
 });
 
 /* Service Cards staggered */
 gsap.fromTo('.service-card',
-  { opacity: 0, y: 60 },
+  { opacity: 0, y: 65 },
   {
     opacity: 1, y: 0,
-    duration: 0.7,
-    stagger: 0.1,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.services-grid', start: 'top 82%', toggleActions: 'play none none none' }
+    duration: 0.85,
+    stagger: { amount: 0.7, ease: 'power2.out' },
+    ease: 'expo.out',
+    scrollTrigger: { trigger: '.services-grid', start: 'top 84%', toggleActions: 'play none none none' }
   }
 );
 
 /* Stats Cards */
 gsap.fromTo('.stat-card',
-  { opacity: 0, y: 50, scale: 0.95 },
+  { opacity: 0, y: 50, scale: 0.94 },
   {
     opacity: 1, y: 0, scale: 1,
-    duration: 0.7,
-    stagger: 0.12,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.stats-grid', start: 'top 82%', toggleActions: 'play none none none' }
+    duration: 0.85,
+    stagger: 0.1,
+    ease: 'expo.out',
+    scrollTrigger: { trigger: '.stats-grid', start: 'top 84%', toggleActions: 'play none none none' }
   }
 );
 
 /* Before/After */
 gsap.fromTo('.ba-card',
-  { opacity: 0, y: 40 },
+  { opacity: 0, y: 45 },
   {
     opacity: 1, y: 0,
-    duration: 0.75,
-    stagger: 0.18,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.before-after', start: 'top 84%', toggleActions: 'play none none none' }
+    duration: 0.9,
+    stagger: 0.2,
+    ease: 'expo.out',
+    scrollTrigger: { trigger: '.before-after', start: 'top 86%', toggleActions: 'play none none none' }
   }
 );
 
-/* Case Study Cards */
-gsap.fromTo('.case-card',
-  { opacity: 0, y: 50 },
+/* Ideal Client Cards */
+gsap.fromTo('.ideal-card',
+  { opacity: 0, y: 55 },
   {
     opacity: 1, y: 0,
-    duration: 0.75,
-    stagger: 0.13,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.case-grid', start: 'top 82%', toggleActions: 'play none none none' }
+    duration: 0.95,
+    stagger: 0.18,
+    ease: 'expo.out',
+    scrollTrigger: { trigger: '.ideal-grid', start: 'top 84%', toggleActions: 'play none none none' }
   }
 );
 
@@ -277,24 +277,24 @@ gsap.fromTo('.why-item',
   { opacity: 0, y: 50 },
   {
     opacity: 1, y: 0,
-    duration: 0.7,
-    stagger: 0.1,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: '.why-grid', start: 'top 82%', toggleActions: 'play none none none' }
+    duration: 0.85,
+    stagger: { amount: 0.55, ease: 'power2.out' },
+    ease: 'expo.out',
+    scrollTrigger: { trigger: '.why-grid', start: 'top 84%', toggleActions: 'play none none none' }
   }
 );
 
 /* Process Steps */
 gsap.fromTo('.process-step',
-  { opacity: 0, y: 50 },
+  { opacity: 0, y: 55 },
   {
     opacity: 1, y: 0,
-    duration: 0.7,
-    stagger: 0.18,
-    ease: 'power3.out',
+    duration: 0.85,
+    stagger: 0.16,
+    ease: 'expo.out',
     scrollTrigger: {
       trigger: '.process-steps',
-      start: 'top 80%',
+      start: 'top 82%',
       toggleActions: 'play none none none',
       onEnter: () => {
         const fill = document.querySelector('.process-line-fill');
@@ -304,28 +304,64 @@ gsap.fromTo('.process-step',
   }
 );
 
+/* Pricing Cards */
+gsap.fromTo('.pricing-card',
+  { opacity: 0, y: 60, scale: 0.96 },
+  {
+    opacity: 1, y: (i, el) => el.classList.contains('featured') ? -10 : 0,
+    scale: 1,
+    duration: 0.9,
+    stagger: 0.12,
+    ease: 'expo.out',
+    scrollTrigger: { trigger: '.pricing-grid', start: 'top 84%', toggleActions: 'play none none none' }
+  }
+);
+
+/* FAQ items */
+gsap.fromTo('.faq-item',
+  { opacity: 0, x: -30 },
+  {
+    opacity: 1, x: 0,
+    duration: 0.7,
+    stagger: 0.08,
+    ease: 'expo.out',
+    scrollTrigger: { trigger: '.faq-list', start: 'top 86%', toggleActions: 'play none none none' }
+  }
+);
+
+/* Guarantee Card */
+gsap.fromTo('.guarantee-card',
+  { opacity: 0, y: 50, scale: 0.97 },
+  {
+    opacity: 1, y: 0, scale: 1,
+    duration: 1.1,
+    ease: 'expo.out',
+    scrollTrigger: { trigger: '#guarantee', start: 'top 84%', toggleActions: 'play none none none' }
+  }
+);
+
 /* CTA section */
 gsap.fromTo('.cta-content',
-  { opacity: 0, y: 60 },
+  { opacity: 0, y: 65 },
   {
-    opacity: 1, y: 0, duration: 1, ease: 'power3.out',
-    scrollTrigger: { trigger: '#cta', start: 'top 80%', toggleActions: 'play none none none' }
+    opacity: 1, y: 0, duration: 1.1, ease: 'expo.out',
+    scrollTrigger: { trigger: '#cta', start: 'top 82%', toggleActions: 'play none none none' }
   }
 );
 
 /* Contact grid */
 gsap.fromTo('.contact-info',
-  { opacity: 0, x: -50 },
+  { opacity: 0, x: -55 },
   {
-    opacity: 1, x: 0, duration: 0.85, ease: 'power3.out',
-    scrollTrigger: { trigger: '.contact-grid', start: 'top 82%', toggleActions: 'play none none none' }
+    opacity: 1, x: 0, duration: 1.0, ease: 'expo.out',
+    scrollTrigger: { trigger: '.contact-grid', start: 'top 84%', toggleActions: 'play none none none' }
   }
 );
 gsap.fromTo('.contact-form-wrap',
-  { opacity: 0, x: 50 },
+  { opacity: 0, x: 55 },
   {
-    opacity: 1, x: 0, duration: 0.85, ease: 'power3.out',
-    scrollTrigger: { trigger: '.contact-grid', start: 'top 82%', toggleActions: 'play none none none' }
+    opacity: 1, x: 0, duration: 1.0, ease: 'expo.out',
+    scrollTrigger: { trigger: '.contact-grid', start: 'top 84%', toggleActions: 'play none none none' }
   }
 );
 
@@ -333,20 +369,20 @@ gsap.fromTo('.contact-form-wrap',
 gsap.fromTo('footer',
   { opacity: 0, y: 40 },
   {
-    opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
-    scrollTrigger: { trigger: 'footer', start: 'top 95%', toggleActions: 'play none none none' }
+    opacity: 1, y: 0, duration: 0.9, ease: 'expo.out',
+    scrollTrigger: { trigger: 'footer', start: 'top 96%', toggleActions: 'play none none none' }
   }
 );
 
 /* ── Animated Counters ───────────────────────────────── */
 const counters = [
-  { selector: '#count-businesses', end: 150, suffix: '+', duration: 2.2,
+  { selector: '#count-businesses', end: 150, duration: 2.2,
     format: (v) => Math.round(v) + '+' },
-  { selector: '#count-leads', end: 50, suffix: 'K+', duration: 2.5,
+  { selector: '#count-leads', end: 50, duration: 2.5,
     format: (v) => Math.round(v) + 'K+' },
-  { selector: '#count-conversion', end: 3, suffix: 'x', duration: 1.8,
+  { selector: '#count-conversion', end: 3, duration: 1.8,
     format: (v) => Math.round(v) + 'x' },
-  { selector: '#count-revenue', end: 25, suffix: 'M+', prefix: '$', duration: 2.0,
+  { selector: '#count-revenue', end: 25, duration: 2.0,
     format: (v) => '$' + Math.round(v) + 'M+' },
 ];
 
@@ -357,13 +393,13 @@ counters.forEach(({ selector, end, duration, format }) => {
   const obj = { value: 0 };
   ScrollTrigger.create({
     trigger: el,
-    start: 'top 85%',
+    start: 'top 87%',
     once: true,
     onEnter: () => {
       gsap.to(obj, {
         value: end,
         duration,
-        ease: 'power2.out',
+        ease: 'expo.out',
         onUpdate: () => { el.textContent = format(obj.value); },
         onComplete: () => { el.textContent = format(end); }
       });
@@ -377,27 +413,47 @@ if (typeof Swiper !== 'undefined') {
     slidesPerView: 1,
     spaceBetween: 28,
     loop: true,
-    autoplay: { delay: 3800, disableOnInteraction: false, pauseOnMouseEnter: true },
-    speed: 700,
+    autoplay: { delay: 4200, disableOnInteraction: false, pauseOnMouseEnter: true },
+    speed: 800,
     pagination: { el: '.swiper-pagination', clickable: true },
     navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
     centeredSlides: true,
     effect: 'slide',
     breakpoints: {
-      768: { slidesPerView: 1.25, spaceBetween: 28 },
-      1024: { slidesPerView: 1.5, spaceBetween: 32 },
+      768: { slidesPerView: 1.2, spaceBetween: 28 },
+      1024: { slidesPerView: 1.45, spaceBetween: 32 },
     }
   });
 }
 
 /* ── Parallax on Glow Orbs ──────────────────────────── */
 gsap.to('.glow-orb-1', {
-  y: -80,
-  scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true }
+  y: -90,
+  scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 1.5 }
 });
 gsap.to('.glow-orb-2', {
-  y: -50,
-  scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true }
+  y: -55,
+  scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 2 }
+});
+
+/* ── FAQ Accordion ───────────────────────────────────── */
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isActive = item.classList.contains('active');
+
+    // Close all open items with smooth animation
+    document.querySelectorAll('.faq-item.active').forEach(openItem => {
+      openItem.classList.remove('active');
+      openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+    });
+
+    // Toggle the clicked item
+    if (!isActive) {
+      item.classList.add('active');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
 });
 
 /* ── Smooth anchor scrolling with Lenis ─────────────── */
@@ -407,7 +463,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const target = document.querySelector(id);
     if (target) {
       e.preventDefault();
-      lenis.scrollTo(target, { duration: 1.4, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+      lenis.scrollTo(target, {
+        duration: 1.5,
+        easing: expoOut
+      });
     }
   });
 });
