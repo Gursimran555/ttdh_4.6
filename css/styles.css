@@ -1600,3 +1600,18 @@ footer {
   .theme-btn  { padding: 6px 8px; }
   .faq-nav-btn { width: 40px; height: 40px; }
 }
+
+/* ── Service Page Link ── */
+.service-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.service-link:hover { opacity: 0.75; }
+
+/* ── Footer multi-column ── */
+.footer-top { flex-wrap: wrap; gap: 32px; }
