@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TTDH Web Solutions — Digital Systems for 7-Figure Businesses</title>
-  <meta name="description" content="TTDH Web Solutions engineers premium websites, AI automation systems, mobile apps &amp; revenue-generating digital ecosystems for high-growth businesses in Australia, UK &amp; USA." />
-  <meta name="keywords" content="web development, AI automation, digital agency, mobile apps, SEO, lead generation, high-ticket" />
-  <meta property="og:title" content="TTDH Web Solutions — Digital Systems for 7-Figure Businesses" />
-  <meta property="og:description" content="Premium digital agency engineering revenue machines for high-value businesses worldwide." />
+  <title>TTDH Web Solutions — Digital Systems That Scale Businesses</title>
+  <meta name="description" content="TTDH Web Solutions builds premium websites, AI automation systems, mobile apps &amp; digital marketing solutions for high-growth businesses in Australia, UK &amp; USA." />
+  <meta name="keywords" content="web development, AI automation, digital agency, mobile apps, SEO, lead generation" />
+  <meta property="og:title" content="TTDH Web Solutions — Digital Systems That Scale Businesses" />
+  <meta property="og:description" content="Premium digital agency building websites, AI systems &amp; automation for high-value businesses worldwide." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ttdhwebsolutions.com" />
-  <meta name="theme-color" content="#04040d" />
+  <meta name="theme-color" content="#0a0a0f" />
 
   <!-- Google Fonts: Inter + Space Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -38,17 +38,47 @@
 
       <ul class="nav-links" role="list">
         <li><a href="#services">Services</a></li>
-        <li><a href="#results">Results</a></li>
+        <li><a href="#why">Why Us</a></li>
         <li><a href="#process">Process</a></li>
-        <li><a href="#investment">Investment</a></li>
         <li><a href="#testimonials">Testimonials</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
 
+      <!-- Theme Switcher -->
+      <div class="theme-switcher" id="theme-switcher" role="navigation" aria-label="Theme switcher">
+        <button class="theme-btn" id="theme-toggle" aria-expanded="false" aria-haspopup="listbox" aria-label="Switch theme">
+          <span class="theme-icon" aria-hidden="true">
+            <!-- Moon icon (dark) -->
+            <svg class="icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <!-- Sun icon (light) -->
+            <svg class="icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </span>
+          <span class="theme-label">Theme</span>
+          <svg class="theme-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <ul class="theme-dropdown" role="listbox" aria-label="Select theme">
+          <li class="theme-option active" data-theme="dark" role="option" tabindex="0" aria-selected="true">
+            <span aria-hidden="true" class="theme-swatch swatch-dark"></span> Dark
+          </li>
+          <li class="theme-option" data-theme="midnight" role="option" tabindex="0" aria-selected="false">
+            <span aria-hidden="true" class="theme-swatch swatch-midnight"></span> Midnight
+          </li>
+          <li class="theme-option" data-theme="light" role="option" tabindex="0" aria-selected="false">
+            <span aria-hidden="true" class="theme-swatch swatch-light"></span> Light
+          </li>
+          <li class="theme-option" data-theme="ocean" role="option" tabindex="0" aria-selected="false">
+            <span aria-hidden="true" class="theme-swatch swatch-ocean"></span> Ocean
+          </li>
+          <li class="theme-option" data-theme="dusk" role="option" tabindex="0" aria-selected="false">
+            <span aria-hidden="true" class="theme-swatch swatch-dusk"></span> Dusk
+          </li>
+        </ul>
+      </div>
+
       <a href="https://wa.me/917009041667" target="_blank" rel="noopener noreferrer"
-         class="btn btn-primary nav-cta desktop magnetic" aria-label="Apply for strategy call">
-        Apply Now
+         class="btn btn-primary nav-cta desktop magnetic" aria-label="Book a call via WhatsApp">
+        Book a Call
       </a>
 
       <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
@@ -63,14 +93,13 @@
 <!-- Mobile Menu Overlay -->
 <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
   <a href="#services">Services</a>
-  <a href="#results">Results</a>
+  <a href="#why">Why Us</a>
   <a href="#process">Process</a>
-  <a href="#investment">Investment</a>
   <a href="#testimonials">Testimonials</a>
   <a href="#faq">FAQ</a>
   <a href="#contact">Contact</a>
   <a href="https://wa.me/917009041667" target="_blank" rel="noopener noreferrer"
-     class="btn btn-primary" style="margin-top:8px;">Apply Now</a>
+     class="btn btn-primary" style="margin-top:8px;">Book a Call</a>
 </div>
 
 
@@ -81,7 +110,6 @@
   <div id="particles-js" aria-hidden="true"></div>
 
   <div class="hero-bg" aria-hidden="true">
-    <div class="hero-bg-grid"></div>
     <div class="glow-orb glow-orb-1"></div>
     <div class="glow-orb glow-orb-2"></div>
     <div class="glow-orb glow-orb-3"></div>
@@ -89,60 +117,26 @@
 
   <div class="container" style="position:relative;z-index:2;width:100%;">
     <div class="hero-content">
-      <div class="hero-badge">⚡ By Application Only &mdash; 5 Client Spots Available This Month</div>
+      <div class="hero-badge">&#x2728; Premium Digital Agency &mdash; AU &middot; UK &middot; USA</div>
 
       <h1 class="hero-headline">
-        We Build Digital Systems That Attract Premium Clients &amp; Print Revenue.
+        We Build Digital Systems That Scale Businesses.
       </h1>
 
       <p class="hero-sub">
-        We engineer high-performance websites, AI automation &amp; digital ecosystems that transform ambitious businesses into industry leaders — turning every click into compounding revenue.
+        We design websites, apps &amp; automation systems that transform businesses into growth machines — built with precision, engineered for results.
       </p>
 
       <div class="hero-ctas">
         <a href="https://wa.me/917009041667" target="_blank" rel="noopener noreferrer"
-           class="btn btn-primary magnetic" aria-label="Apply for a free strategy call">
+           class="btn btn-primary magnetic" aria-label="Book a free strategy call">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-          Apply for Strategy Call
+          Book Free Strategy Call
         </a>
-        <a href="#process" class="btn btn-outline magnetic" aria-label="See how we work">
-          See How It Works &rarr;
+        <a href="#services" class="btn btn-outline magnetic" aria-label="See our services">
+          Explore Services &rarr;
         </a>
       </div>
-
-      <div class="hero-trust">
-        <div class="trust-item">
-          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-          150+ Clients Served
-        </div>
-        <div class="trust-item">
-          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-          100% Results Guaranteed
-        </div>
-        <div class="trust-item">
-          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-          AU &middot; UK &middot; USA
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Floating UI Cards -->
-  <div class="hero-floating" aria-hidden="true">
-    <div class="float-card">
-      <div class="float-card-label">Monthly Revenue</div>
-      <div class="float-card-value">$2.4M</div>
-      <div class="float-card-sub">&#8593; 312% from last quarter</div>
-    </div>
-    <div class="float-card">
-      <div class="float-card-label">Leads Captured</div>
-      <div class="float-card-value">1,847</div>
-      <div class="float-card-sub">&#8593; 94% conversion rate</div>
-    </div>
-    <div class="float-card">
-      <div class="float-card-label">AI Calls Handled</div>
-      <div class="float-card-value">24/7</div>
-      <div class="float-card-sub">Zero missed opportunities</div>
     </div>
   </div>
 </section>
@@ -155,82 +149,91 @@
   <div class="container">
     <div class="section-header">
       <div class="section-tag">Our Services</div>
-      <h2>End-to-End Digital Systems</h2>
-      <p>Everything your business needs to dominate online &mdash; engineered under one expert roof</p>
+      <h2>What We Build</h2>
+      <p>End-to-end digital solutions engineered to drive measurable growth for your business</p>
     </div>
 
     <div class="services-grid">
 
+      <!-- 1 -->
       <article class="service-card">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
         </div>
         <h3>Premium Website Development</h3>
-        <p>Conversion-engineered websites built to attract premium clients and turn every visitor into a qualified lead.</p>
+        <p>High-performance websites built to convert visitors into paying customers with stunning design and blazing speed.</p>
       </article>
 
+      <!-- 2 -->
       <article class="service-card">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
         </div>
         <h3>Mobile App Development</h3>
-        <p>Native &amp; cross-platform apps for Android &amp; iOS, engineered for performance, retention and user delight.</p>
+        <p>Native &amp; cross-platform apps for Android &amp; iOS that users love, built for performance and retention.</p>
       </article>
 
+      <!-- 3 -->
       <article class="service-card">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"></path></svg>
         </div>
-        <h3>AI Receptionist &amp; Automation</h3>
-        <p>Never miss a lead. Our AI handles calls, bookings &amp; follow-ups 24/7 &mdash; your business never sleeps.</p>
+        <h3>AI Receptionist &amp; Call Automation</h3>
+        <p>Never miss a lead. Our AI handles calls, bookings &amp; follow-ups 24/7 so your business never sleeps.</p>
       </article>
 
+      <!-- 4 -->
       <article class="service-card">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
         </div>
-        <h3>E-commerce Development</h3>
-        <p>Scalable stores engineered for seamless shopping, maximum conversions and repeat revenue on autopilot.</p>
+        <h3>E-commerce Store Development</h3>
+        <p>Scalable online stores built for seamless shopping experiences that drive repeat revenue and loyalty.</p>
       </article>
 
+      <!-- 5 -->
       <article class="service-card">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="10" r="3"></circle><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"></path></svg>
         </div>
-        <h3>Brand Identity &amp; Design</h3>
-        <p>Visual identities that command premium pricing &mdash; crafted to build authority, trust and lasting memorability.</p>
+        <h3>Graphic Design &amp; Branding</h3>
+        <p>Visual identities that make your brand unforgettable — crafted to build trust and command premium pricing.</p>
       </article>
 
+      <!-- 6 -->
+      <article class="service-card">
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+        </div>
+        <h3>Logo &amp; Visual Identity</h3>
+        <p>Iconic logos and brand systems that command attention, built to scale across every touchpoint and market.</p>
+      </article>
+
+      <!-- 7 -->
       <article class="service-card">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
         </div>
         <h3>SEO &amp; Digital Marketing</h3>
-        <p>Dominate search rankings and drive consistent organic growth with data-driven strategies that compound over time.</p>
+        <p>Dominate search rankings and drive consistent organic growth with data-driven SEO and content strategies.</p>
       </article>
 
+      <!-- 8 -->
       <article class="service-card">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
         </div>
         <h3>Lead Generation Systems</h3>
-        <p>Automated funnels that capture, nurture &amp; convert high-value leads into paying clients while you focus on delivery.</p>
+        <p>Automated funnels that capture, nurture &amp; convert leads into paying clients while you focus on delivery.</p>
       </article>
 
+      <!-- 9 -->
       <article class="service-card">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"></path></svg>
         </div>
         <h3>Business Process Automation</h3>
-        <p>Eliminate manual tasks and automate workflows to 10x your output without adding headcount or complexity.</p>
-      </article>
-
-      <article class="service-card">
-        <div class="service-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
-        </div>
-        <h3>Conversion Rate Optimization</h3>
-        <p>Data-driven strategies that maximize revenue from existing traffic &mdash; turning more browsers into consistent buyers.</p>
+        <p>Eliminate manual tasks and automate workflows to save time, reduce costs and scale operations effortlessly.</p>
       </article>
 
     </div>
@@ -239,143 +242,14 @@
 
 
 <!-- ══════════════════════════════════════════════════
-     SECTION 3 — RESULTS / STATS
-══════════════════════════════════════════════════ -->
-<section id="results" aria-label="Results and statistics">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-tag">Proven Results</div>
-      <h2>The Numbers Behind Our Impact</h2>
-      <p>Every engagement is measured, tracked and optimized &mdash; here's what we consistently deliver</p>
-    </div>
-
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-        </div>
-        <div class="stat-number" id="count-businesses">150+</div>
-        <div class="stat-label">Businesses Transformed</div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-        </div>
-        <div class="stat-number" id="count-leads">50K+</div>
-        <div class="stat-label">Qualified Leads Generated</div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
-        </div>
-        <div class="stat-number" id="count-conversion">3x</div>
-        <div class="stat-label">Average Conversion Growth</div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-        </div>
-        <div class="stat-number" id="count-revenue">$25M+</div>
-        <div class="stat-label">Revenue Generated for Clients</div>
-      </div>
-    </div>
-
-    <!-- Before / After -->
-    <div class="before-after">
-      <div class="ba-card before">
-        <div class="ba-header">
-          <h3>Before TTDH</h3>
-          <span class="ba-badge before">Before</span>
-        </div>
-        <div class="ba-items">
-          <div class="ba-item"><span class="ba-item-dot"></span>Low traffic &amp; zero visibility online</div>
-          <div class="ba-item"><span class="ba-item-dot"></span>Outdated, slow website losing customers</div>
-          <div class="ba-item"><span class="ba-item-dot"></span>No automation &mdash; manually chasing leads</div>
-          <div class="ba-item"><span class="ba-item-dot"></span>Unpredictable, feast-or-famine revenue</div>
-          <div class="ba-item"><span class="ba-item-dot"></span>Competing on price instead of value</div>
-        </div>
-      </div>
-
-      <div class="ba-card after">
-        <div class="ba-header">
-          <h3>After TTDH</h3>
-          <span class="ba-badge after">After</span>
-        </div>
-        <div class="ba-items">
-          <div class="ba-item"><span class="ba-item-dot"></span>3x organic traffic with compounding growth</div>
-          <div class="ba-item"><span class="ba-item-dot"></span>Premium design that commands respect &amp; trust</div>
-          <div class="ba-item"><span class="ba-item-dot"></span>Full AI automation capturing leads 24/7</div>
-          <div class="ba-item"><span class="ba-item-dot"></span>Predictable, scalable monthly revenue</div>
-          <div class="ba-item"><span class="ba-item-dot"></span>Attracting premium clients at premium prices</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════════════
-     SECTION 4 — WHO WE WORK WITH (NEW)
-══════════════════════════════════════════════════ -->
-<section id="ideal-client" aria-label="Who we work with">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-tag">Who We Work With</div>
-      <h2>Built For <span class="gradient-text">Serious Business Owners</span></h2>
-      <p>We&rsquo;re selective about who we partner with &mdash; because your success is our reputation</p>
-    </div>
-
-    <div class="ideal-grid">
-
-      <div class="ideal-card ideal-yes">
-        <div class="ideal-check" aria-hidden="true">&#10003;</div>
-        <h3>You&rsquo;re a Perfect Fit If&hellip;</h3>
-        <ul class="ideal-list yes">
-          <li>You run a business generating $500K+ annually and want to scale significantly</li>
-          <li>You&rsquo;re serious about investing in digital infrastructure for long-term growth</li>
-          <li>You understand that premium work requires a real investment</li>
-          <li>You want a strategic partner, not just another vendor</li>
-          <li>You&rsquo;re ready to implement recommendations and move decisively</li>
-          <li>You value proven ROI over the cheapest price available</li>
-        </ul>
-        <a href="https://wa.me/917009041667" target="_blank" rel="noopener noreferrer"
-           class="btn btn-primary" style="margin-top: 32px; display:inline-flex;">
-          That&rsquo;s Me &mdash; Let&rsquo;s Talk &rarr;
-        </a>
-      </div>
-
-      <div class="ideal-card ideal-no">
-        <div class="ideal-cross" aria-hidden="true">&times;</div>
-        <h3>This Isn&rsquo;t Right If&hellip;</h3>
-        <ul class="ideal-list no">
-          <li>You&rsquo;re looking for the cheapest option available</li>
-          <li>You&rsquo;re not committed to implementing our recommendations</li>
-          <li>You expect overnight results without strategic investment</li>
-          <li>You want to micromanage every design and copy decision</li>
-          <li>You don&rsquo;t have a clear vision for your business direction</li>
-          <li>You view your website as a cost, not a revenue-generating asset</li>
-        </ul>
-        <p class="ideal-note" style="margin-top: 32px;">Not where you are yet? <a href="#contact">Get in touch</a> and we&rsquo;ll point you in the right direction.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════════════
-     SECTION 5 — WHY CHOOSE US
+     SECTION 3 — WHY CHOOSE US
 ══════════════════════════════════════════════════ -->
 <section id="why" aria-label="Why choose TTDH">
   <div class="container">
     <div class="section-header">
       <div class="section-tag">Why TTDH</div>
-      <h2>What Sets Us Apart</h2>
-      <p>We don&rsquo;t build websites &mdash; we engineer revenue-generating digital systems</p>
+      <h2>What Makes Us Different</h2>
+      <p>We don't just build websites — we engineer complete digital growth systems</p>
     </div>
 
     <div class="why-grid">
@@ -384,40 +258,40 @@
         <div class="why-icon-wrap" aria-hidden="true">
           <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
         </div>
-        <h3>ROI-First Strategy</h3>
-        <p>Every decision is driven by measurable business outcomes. No vanity metrics &mdash; only revenue, leads and growth.</p>
+        <h3>ROI-Focused Strategy</h3>
+        <p>Every decision is driven by measurable business outcomes, not vanity metrics or aesthetics alone.</p>
       </div>
 
       <div class="why-item">
         <div class="why-icon-wrap" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
         </div>
-        <h3>100% Custom Built</h3>
-        <p>No templates. No shortcuts. Every solution is engineered from scratch for your specific business and goals.</p>
+        <h3>Custom-Built Systems</h3>
+        <p>No templates. No shortcuts. Every solution is 100% tailored to your specific business goals.</p>
       </div>
 
       <div class="why-item">
         <div class="why-icon-wrap" aria-hidden="true">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"></path></svg>
         </div>
-        <h3>AI-First Automation</h3>
-        <p>Cutting-edge AI integrated into your business to automate, optimize and scale what used to require entire teams.</p>
+        <h3>AI-Driven Automation</h3>
+        <p>We integrate cutting-edge AI to automate, optimize and scale processes that used to require entire teams.</p>
       </div>
 
       <div class="why-item">
         <div class="why-icon-wrap" aria-hidden="true">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
         </div>
-        <h3>Launch in Weeks</h3>
-        <p>We move with urgency &mdash; your project launches in weeks, not months, without any compromise on quality.</p>
+        <h3>Fast Turnaround</h3>
+        <p>Launch-ready in weeks, not months. We move fast without sacrificing quality or attention to detail.</p>
       </div>
 
       <div class="why-item">
         <div class="why-icon-wrap" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 14 19.79 19.79 0 0 1 1.6 5.35 2 2 0 0 1 3.56 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.5a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 18l.19-1.08z"></path></svg>
         </div>
-        <h3>Lifetime Partnership</h3>
-        <p>We become an extension of your team &mdash; always available, always optimizing, always driving your growth forward.</p>
+        <h3>Dedicated Support</h3>
+        <p>Your success is our priority — we're always one call away with ongoing support and optimization.</p>
       </div>
 
     </div>
@@ -426,14 +300,14 @@
 
 
 <!-- ══════════════════════════════════════════════════
-     SECTION 6 — PROCESS
+     SECTION 4 — PROCESS
 ══════════════════════════════════════════════════ -->
 <section id="process" aria-label="Our process">
   <div class="container">
     <div class="section-header">
       <div class="section-tag">Our Process</div>
-      <h2>From Strategy to Scale in 4 Steps</h2>
-      <p>A battle-tested framework that consistently delivers measurable results for every client</p>
+      <h2>How We Work</h2>
+      <p>A proven 4-step framework that delivers results every single time</p>
     </div>
 
     <div class="process-wrapper">
@@ -448,8 +322,8 @@
             <span class="step-num">01</span>
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
           </div>
-          <h3>Deep-Dive Discovery</h3>
-          <p>We analyze your business, competitors &amp; market inside out &mdash; then build a data-backed strategy unique to your goals.</p>
+          <h3>Strategy &amp; Research</h3>
+          <p>We analyze your business, competitors &amp; market to build a data-backed winning plan unique to your goals.</p>
         </div>
 
         <div class="process-step">
@@ -457,8 +331,8 @@
             <span class="step-num">02</span>
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
           </div>
-          <h3>Design &amp; Engineering</h3>
-          <p>Custom UI/UX paired with clean, scalable code &mdash; every element built for maximum performance and conversions.</p>
+          <h3>Design &amp; Development</h3>
+          <p>Custom UI/UX design paired with clean, scalable development — built for performance and conversion.</p>
         </div>
 
         <div class="process-step">
@@ -466,8 +340,8 @@
             <span class="step-num">03</span>
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"></path></svg>
           </div>
-          <h3>AI &amp; Automation Integration</h3>
-          <p>CRM, AI tools and lead systems &mdash; seamlessly integrated and configured to run your growth on autopilot, 24/7.</p>
+          <h3>Automation &amp; Integration</h3>
+          <p>AI tools, CRM, lead systems — all seamlessly integrated and configured for maximum efficiency and ROI.</p>
         </div>
 
         <div class="process-step">
@@ -475,8 +349,8 @@
             <span class="step-num">04</span>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
           </div>
-          <h3>Launch &amp; Continuous Scale</h3>
-          <p>Go live, measure results, optimize relentlessly &mdash; and scale using data-driven insights as your business grows.</p>
+          <h3>Launch &amp; Scale</h3>
+          <p>Go live, optimize performance, measure results and continuously scale your growth with data-driven refinements.</p>
         </div>
 
       </div>
@@ -486,96 +360,14 @@
 
 
 <!-- ══════════════════════════════════════════════════
-     SECTION 7 — INVESTMENT (NEW)
-══════════════════════════════════════════════════ -->
-<section id="investment" aria-label="Investment and pricing">
-  <div class="investment-bg" aria-hidden="true"></div>
-  <div class="container">
-    <div class="section-header">
-      <div class="section-tag">Investment</div>
-      <h2>Choose Your Growth System</h2>
-      <p>Transparent, value-based investment &mdash; every dollar pays for itself multiple times over</p>
-    </div>
-
-    <div class="pricing-grid">
-
-      <div class="pricing-card">
-        <div class="pricing-label">Starter System</div>
-        <div class="pricing-price">
-          <span class="price-from">From</span>
-          <span class="price-amount">$5,997</span>
-        </div>
-        <p class="pricing-desc">The perfect foundation for businesses ready to establish a powerful, high-converting digital presence.</p>
-        <ul class="pricing-features">
-          <li><span class="feat-check">&#10003;</span> Premium Website (up to 10 pages)</li>
-          <li><span class="feat-check">&#10003;</span> Mobile-Optimised &amp; Lightning Fast</li>
-          <li><span class="feat-check">&#10003;</span> SEO Foundation &amp; Technical Setup</li>
-          <li><span class="feat-check">&#10003;</span> Lead Capture &amp; Contact Forms</li>
-          <li><span class="feat-check">&#10003;</span> Google Analytics Integration</li>
-          <li><span class="feat-check">&#10003;</span> 30-Day Post-Launch Support</li>
-        </ul>
-        <p class="pricing-timeline">&#8987; Launch in 3&ndash;4 Weeks</p>
-        <a href="https://wa.me/917009041667" target="_blank" rel="noopener noreferrer"
-           class="btn btn-outline pricing-btn">Get Started &rarr;</a>
-      </div>
-
-      <div class="pricing-card featured">
-        <div class="pricing-popular">Most Popular</div>
-        <div class="pricing-label">Growth System</div>
-        <div class="pricing-price">
-          <span class="price-from">From</span>
-          <span class="price-amount">$14,997</span>
-        </div>
-        <p class="pricing-desc">The complete growth engine for businesses ready to automate, scale and dominate their market.</p>
-        <ul class="pricing-features">
-          <li><span class="feat-check">&#10003;</span> Everything in Starter, PLUS:</li>
-          <li><span class="feat-check">&#10003;</span> Custom App Development (Web/Mobile)</li>
-          <li><span class="feat-check">&#10003;</span> AI Receptionist &amp; Call Automation</li>
-          <li><span class="feat-check">&#10003;</span> Lead Generation Funnel System</li>
-          <li><span class="feat-check">&#10003;</span> CRM Integration &amp; Automation</li>
-          <li><span class="feat-check">&#10003;</span> 90-Day Post-Launch Optimisation</li>
-        </ul>
-        <p class="pricing-timeline">&#8987; Launch in 6&ndash;8 Weeks</p>
-        <a href="https://wa.me/917009041667" target="_blank" rel="noopener noreferrer"
-           class="btn btn-primary pricing-btn magnetic">Apply Now &rarr;</a>
-      </div>
-
-      <div class="pricing-card">
-        <div class="pricing-label">Enterprise System</div>
-        <div class="pricing-price">
-          <span class="price-from">&nbsp;</span>
-          <span class="price-amount">Custom</span>
-        </div>
-        <p class="pricing-desc">Full-stack digital transformation for established businesses generating $1M+ in annual revenue.</p>
-        <ul class="pricing-features">
-          <li><span class="feat-check">&#10003;</span> Everything in Growth, PLUS:</li>
-          <li><span class="feat-check">&#10003;</span> Full Digital Ecosystem Build-Out</li>
-          <li><span class="feat-check">&#10003;</span> Custom AI Automation Workflows</li>
-          <li><span class="feat-check">&#10003;</span> Brand Identity &amp; Design System</li>
-          <li><span class="feat-check">&#10003;</span> Dedicated Account Manager</li>
-          <li><span class="feat-check">&#10003;</span> 12-Month Growth Partnership</li>
-        </ul>
-        <p class="pricing-timeline">&#8987; Timeline: Tailored to Your Goals</p>
-        <a href="https://wa.me/917009041667" target="_blank" rel="noopener noreferrer"
-           class="btn btn-outline pricing-btn">Book a Discovery Call &rarr;</a>
-      </div>
-
-    </div>
-
-    <p class="pricing-note">All investments include a results-backed 90-day guarantee. We don&rsquo;t win unless you win.</p>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════════════
-     SECTION 8 — TESTIMONIALS
+     SECTION 5 — TESTIMONIALS
 ══════════════════════════════════════════════════ -->
 <section id="testimonials" aria-label="Client testimonials">
   <div class="container">
     <div class="section-header">
-      <div class="section-tag">Client Results</div>
+      <div class="section-tag">Testimonials</div>
       <h2>What Our Clients Say</h2>
-      <p>Hear directly from business owners who&rsquo;ve experienced the TTDH transformation</p>
+      <p>Hear directly from business owners we've had the pleasure of working with</p>
     </div>
 
     <div class="swiper" role="region" aria-label="Testimonials carousel">
@@ -584,12 +376,12 @@
         <div class="swiper-slide">
           <div class="testi-card">
             <div class="testi-stars" aria-label="5 stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
-            <p class="testi-quote">"TTDH transformed our online presence completely. Our leads tripled in 60 days. The AI receptionist never lets a customer slip through &mdash; it&rsquo;s been a total game changer. Worth every dollar and then some."</p>
+            <p class="testi-quote">"TTDH transformed our online presence completely. The AI receptionist never lets a customer slip through — it's been a total game changer for our business."</p>
             <div class="testi-author">
               <div class="testi-avatar" aria-hidden="true">JR</div>
               <div class="testi-info">
                 <h4>James R.</h4>
-                <span>Roofing Company Owner, Australia &middot; &#8593; 312% leads</span>
+                <span>Business Owner, Australia</span>
               </div>
             </div>
           </div>
@@ -598,12 +390,12 @@
         <div class="swiper-slide">
           <div class="testi-card">
             <div class="testi-stars" aria-label="5 stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
-            <p class="testi-quote">"The AI receptionist alone paid for itself in the first week. We went from missing calls to booking 40+ appointments automatically. The ROI was immediate and compounds every month."</p>
+            <p class="testi-quote">"The AI receptionist alone paid for itself in the first week. Incredible ROI. We went from missing calls to booking appointments automatically. Truly transformative."</p>
             <div class="testi-author">
               <div class="testi-avatar" aria-hidden="true">SM</div>
               <div class="testi-info">
                 <h4>Dr. Sarah M.</h4>
-                <span>Dental Clinic Owner, UK &middot; &#8593; 2.5x patient bookings</span>
+                <span>Clinic Owner, UK</span>
               </div>
             </div>
           </div>
@@ -612,12 +404,12 @@
         <div class="swiper-slide">
           <div class="testi-card">
             <div class="testi-stars" aria-label="5 stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
-            <p class="testi-quote">"The best digital agency we&rsquo;ve ever worked with. They understood our premium positioning and built a system that consistently attracts the right clients at our target price point. Consultation requests are up 180%."</p>
+            <p class="testi-quote">"Professional, fast, and results-driven. Best digital agency we've worked with. They understood our brand and delivered beyond expectations."</p>
             <div class="testi-author">
               <div class="testi-avatar" aria-hidden="true">MT</div>
               <div class="testi-info">
                 <h4>Michael T.</h4>
-                <span>Legal Firm Partner, USA &middot; &#8593; 180% consultation requests</span>
+                <span>Legal Firm Partner, USA</span>
               </div>
             </div>
           </div>
@@ -626,26 +418,12 @@
         <div class="swiper-slide">
           <div class="testi-card">
             <div class="testi-stars" aria-label="5 stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
-            <p class="testi-quote">"Our e-commerce revenue jumped 280% after TTDH rebuilt our store. The conversion optimisation work alone was worth 10x our investment. I cannot recommend them highly enough to any serious business owner."</p>
-            <div class="testi-author">
-              <div class="testi-avatar" aria-hidden="true">PK</div>
-              <div class="testi-info">
-                <h4>Priya K.</h4>
-                <span>E-commerce Brand Owner, Global &middot; &#8593; 280% revenue</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="swiper-slide">
-          <div class="testi-card">
-            <div class="testi-stars" aria-label="5 stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
-            <p class="testi-quote">"From branding to automation &mdash; they handled everything end-to-end with zero headaches. My business now runs smoother than ever and growth has been consistent and predictable since working with TTDH."</p>
+            <p class="testi-quote">"From branding to automation — they handled everything end-to-end. Truly a one-stop shop for everything digital. My business runs smoother than ever."</p>
             <div class="testi-author">
               <div class="testi-avatar" aria-hidden="true">DL</div>
               <div class="testi-info">
                 <h4>David L.</h4>
-                <span>Business Consultant, UK &middot; Consistent monthly growth</span>
+                <span>Business Consultant, UK</span>
               </div>
             </div>
           </div>
@@ -660,85 +438,85 @@
 
 
 <!-- ══════════════════════════════════════════════════
-     SECTION 9 — FAQ (NEW)
+     SECTION 6 — FAQ
 ══════════════════════════════════════════════════ -->
 <section id="faq" aria-label="Frequently asked questions">
   <div class="container">
     <div class="section-header">
       <div class="section-tag">FAQ</div>
-      <h2>Questions Answered</h2>
-      <p>Everything you need to know before taking the next step</p>
+      <h2>Frequently Asked Questions</h2>
+      <p>Everything you need to know before getting started with us</p>
     </div>
 
     <div class="faq-list" role="list">
 
       <div class="faq-item" role="listitem">
         <button class="faq-question" aria-expanded="false">
-          <span>How quickly will I see results?</span>
-          <div class="faq-icon" aria-hidden="true"><span></span><span></span></div>
+          <span>What services does TTDH offer?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
         </button>
         <div class="faq-answer">
-          <p>Most clients see measurable improvements within 30&ndash;60 days. Websites launch in 3&ndash;8 weeks, AI automation delivers results from day one, and SEO shows compounding growth from month 3. We set clear KPIs before we start so you always know exactly where you stand.</p>
+          <p>We offer a comprehensive range of digital services: premium website development, mobile app development (iOS &amp; Android), AI automation &amp; receptionist systems, e-commerce stores, branding &amp; logo design, SEO &amp; digital marketing, and business process automation. Think of us as your complete digital growth partner.</p>
         </div>
       </div>
 
       <div class="faq-item" role="listitem">
         <button class="faq-question" aria-expanded="false">
-          <span>What makes TTDH different from other agencies?</span>
-          <div class="faq-icon" aria-hidden="true"><span></span><span></span></div>
+          <span>How long does a typical project take?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
         </button>
         <div class="faq-answer">
-          <p>Most agencies deliver a website and disappear. We build full digital ecosystems &mdash; integrating AI, automation, lead generation and SEO into one cohesive growth system. We&rsquo;re ROI-obsessed: every decision is made based on revenue impact. You&rsquo;re not a project to us &mdash; you&rsquo;re a long-term partner.</p>
-        </div>
-      </div>
-
-      <div class="faq-item" role="listitem">
-        <button class="faq-question" aria-expanded="false">
-          <span>What is the investment and is there a minimum budget?</span>
-          <div class="faq-icon" aria-hidden="true"><span></span><span></span></div>
-        </button>
-        <div class="faq-answer">
-          <p>Projects start from $5,997. Our clients typically see 3&ndash;10x ROI on their investment. We&rsquo;re fully transparent about all costs upfront. If your budget doesn&rsquo;t align with your goals, we&rsquo;ll tell you honestly rather than overpromise and under-deliver.</p>
+          <p>Project timelines vary by scope. A standard website typically takes 2–4 weeks. A full branding + website package runs 4–6 weeks. Mobile apps and complex automation systems may take 6–12 weeks. We always provide a clear timeline before we begin and keep you updated at every step.</p>
         </div>
       </div>
 
       <div class="faq-item" role="listitem">
         <button class="faq-question" aria-expanded="false">
           <span>Do you work with businesses outside Australia, UK, and USA?</span>
-          <div class="faq-icon" aria-hidden="true"><span></span><span></span></div>
+          <span class="faq-icon" aria-hidden="true"></span>
         </button>
         <div class="faq-answer">
-          <p>Absolutely. While our strongest client base is across Australia, UK and USA, we work with high-growth businesses globally. We&rsquo;ve delivered projects for clients in Europe, Canada, UAE and Southeast Asia. If your business is serious about growth, location is never a barrier.</p>
+          <p>Absolutely! While our primary markets are Australia, UK, and USA, we work with businesses globally. Our entire workflow is remote-friendly — strategy calls, design reviews, and launches all happen seamlessly regardless of your location or time zone.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false">
+          <span>What is the cost of your services?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>Pricing depends on the scope and complexity of your project. We offer competitive rates without compromising on quality. We provide a detailed, transparent quote after an initial discovery call — no hidden fees, no surprises. Book a free strategy call to get your custom quote.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false">
+          <span>What does the AI receptionist &amp; call automation actually do?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>Our AI system answers phone calls and web inquiries 24/7 using natural language. It qualifies leads, books appointments directly into your calendar, sends follow-up messages, and escalates urgent requests to you — all automatically. It's like having a full-time receptionist without the overhead.</p>
         </div>
       </div>
 
       <div class="faq-item" role="listitem">
         <button class="faq-question" aria-expanded="false">
           <span>How involved do I need to be during the project?</span>
-          <div class="faq-icon" aria-hidden="true"><span></span><span></span></div>
+          <span class="faq-icon" aria-hidden="true"></span>
         </button>
         <div class="faq-answer">
-          <p>We&rsquo;ve designed our process to require minimal time from you while keeping you fully informed. Expect two structured review calls per phase (30&ndash;45 minutes), a shared project board, and weekly progress updates. We handle strategy, design, development, copy and testing. Your job is to run your business; ours is to build your growth engine.</p>
+          <p>We designed our process to be efficient for busy business owners. You'll have a kickoff call, a mid-point review, and a final sign-off — typically just 2–3 hours of your time per week. We handle all the heavy lifting and keep you informed through a shared project dashboard.</p>
         </div>
       </div>
 
       <div class="faq-item" role="listitem">
         <button class="faq-question" aria-expanded="false">
-          <span>Do you offer a guarantee on results?</span>
-          <div class="faq-icon" aria-hidden="true"><span></span><span></span></div>
+          <span>Do you provide ongoing support after the project launches?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
         </button>
         <div class="faq-answer">
-          <p>Yes. We stand behind our work with a 90-Day Performance Guarantee. If we don&rsquo;t hit the agreed performance metrics within 90 days of launch, we keep working at zero additional cost until we do. We&rsquo;ve never had to invoke it &mdash; but it exists because we believe a real partnership means shared stakes.</p>
-        </div>
-      </div>
-
-      <div class="faq-item" role="listitem">
-        <button class="faq-question" aria-expanded="false">
-          <span>What happens after my project launches?</span>
-          <div class="faq-icon" aria-hidden="true"><span></span><span></span></div>
-        </button>
-        <div class="faq-answer">
-          <p>Launch is just the beginning. Every package includes post-launch support (30&ndash;90 days) for active optimisation. Enterprise clients receive a 12-month growth partnership. We monitor performance, make data-driven improvements and scale what&rsquo;s working. Most clients continue with us long-term because the relationship keeps delivering compounding ROI.</p>
+          <p>Yes! Every project includes a 30-day post-launch support period at no extra cost. After that, we offer flexible monthly maintenance &amp; support packages to keep your digital systems running at peak performance, with updates, optimizations, and priority support.</p>
         </div>
       </div>
 
@@ -748,48 +526,7 @@
 
 
 <!-- ══════════════════════════════════════════════════
-     SECTION 10 — GUARANTEE (NEW)
-══════════════════════════════════════════════════ -->
-<section id="guarantee" aria-label="Our guarantee">
-  <div class="container">
-    <div class="guarantee-card">
-      <div class="guarantee-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-          <polyline points="9 12 11 14 15 10"></polyline>
-        </svg>
-      </div>
-      <div class="guarantee-content">
-        <div class="section-tag" style="margin-bottom:16px;">Our Guarantee</div>
-        <h2>We Don&rsquo;t Win Until <span class="gradient-text">You Win.</span></h2>
-        <p>Every project comes with our 90-Day Performance Guarantee. We agree on clear, measurable goals before we start. If we don&rsquo;t hit those targets within 90 days of launch, we keep working &mdash; at zero additional cost &mdash; until we do.</p>
-        <p>In 5+ years and 150+ clients, we&rsquo;ve never had to invoke it. But it exists because we believe a real partnership means shared stakes &mdash; we put our money where our mouth is.</p>
-        <div class="guarantee-items">
-          <div class="guarantee-item">
-            <span class="g-check">&#10003;</span>
-            <span>Clear KPIs agreed before we start</span>
-          </div>
-          <div class="guarantee-item">
-            <span class="g-check">&#10003;</span>
-            <span>90-day performance window</span>
-          </div>
-          <div class="guarantee-item">
-            <span class="g-check">&#10003;</span>
-            <span>Continue at no cost if targets missed</span>
-          </div>
-          <div class="guarantee-item">
-            <span class="g-check">&#10003;</span>
-            <span>Full transparency &amp; reporting throughout</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════════════
-     SECTION 11 — FINAL CTA
+     SECTION 7 — FINAL CTA
 ══════════════════════════════════════════════════ -->
 <section id="cta" aria-label="Call to action">
   <div class="cta-bg" aria-hidden="true">
@@ -799,28 +536,28 @@
 
   <div class="container">
     <div class="cta-content">
-      <h2>Ready To Build a<br><span class="gradient-text">Revenue Machine?</span></h2>
-      <p>Join 150+ business owners who&rsquo;ve transformed their digital presence into a consistent growth engine.<br>Your strategy call is free. Your results will be priceless.</p>
+      <h2>Ready To Scale<br><span class="gradient-text">Your Business?</span></h2>
+      <p>Let's build a digital system that works for you 24/7 and drives compounding growth.</p>
       <a href="https://wa.me/917009041667" target="_blank" rel="noopener noreferrer"
          class="btn btn-primary magnetic" style="font-size:18px; padding:20px 48px;"
-         aria-label="Apply for your free strategy call">
-        Apply for Your Free Strategy Call &rarr;
+         aria-label="Book your free strategy call">
+        Book Your Free Strategy Call &rarr;
       </a>
-      <p class="cta-scarcity">&#9889; Only 5 new clients accepted per month &mdash; <strong>3 spots remaining</strong></p>
+      <p class="cta-note">Free 30-minute strategy call &mdash; no obligations, no pressure.</p>
     </div>
   </div>
 </section>
 
 
 <!-- ══════════════════════════════════════════════════
-     SECTION 12 — CONTACT
+     SECTION 8 — CONTACT
 ══════════════════════════════════════════════════ -->
 <section id="contact" aria-label="Contact">
   <div class="container">
     <div class="section-header">
       <div class="section-tag">Contact Us</div>
-      <h2>Start Your Growth Journey</h2>
-      <p>Tell us about your business and we&rsquo;ll show you exactly what&rsquo;s possible</p>
+      <h2>Get In Touch</h2>
+      <p>Let's start your growth journey — we'd love to learn about your business</p>
     </div>
 
     <div class="contact-grid">
@@ -828,14 +565,14 @@
       <!-- Left: Contact Info -->
       <div class="contact-info">
         <h3>TTDH Web Solutions</h3>
-        <p>We work with ambitious business owners across Australia, UK, and USA to build digital systems that generate consistent, scalable and predictable revenue.</p>
+        <p>We work with high-value businesses across Australia, UK, and USA to build digital systems that generate consistent, scalable revenue.</p>
 
         <div class="contact-item">
           <div class="contact-item-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 14 19.79 19.79 0 0 1 1.6 5.35 2 2 0 0 1 3.56 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.5a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 18l.19-1.08z"></path></svg>
           </div>
           <div class="contact-item-content">
-            <strong>WhatsApp (Preferred)</strong>
+            <strong>WhatsApp</strong>
             <a href="https://wa.me/917009041667" target="_blank" rel="noopener noreferrer">+91 7009041667</a>
           </div>
         </div>
@@ -888,21 +625,10 @@
             <input type="email" id="contact-email" name="email" placeholder="john@company.com" required autocomplete="email" />
           </div>
           <div class="form-group">
-            <label for="contact-revenue">Annual Business Revenue</label>
-            <select id="contact-revenue" name="revenue">
-              <option value="" disabled selected>Select your range</option>
-              <option value="under-100k">Under $100K</option>
-              <option value="100k-500k">$100K &ndash; $500K</option>
-              <option value="500k-1m">$500K &ndash; $1M</option>
-              <option value="1m-5m">$1M &ndash; $5M</option>
-              <option value="5m-plus">$5M+</option>
-            </select>
+            <label for="contact-message">Your Message</label>
+            <textarea id="contact-message" name="message" placeholder="Tell us about your business and what you're looking to achieve..." required></textarea>
           </div>
-          <div class="form-group">
-            <label for="contact-message">What Do You Want to Achieve?</label>
-            <textarea id="contact-message" name="message" placeholder="Tell us about your business and the specific results you want to achieve in the next 90 days..." required></textarea>
-          </div>
-          <button type="submit" class="form-submit">Send My Application &rarr;</button>
+          <button type="submit" class="form-submit">Send Message &rarr;</button>
         </form>
       </div>
 
@@ -941,9 +667,8 @@
         <ul>
           <li><a href="#hero">Home</a></li>
           <li><a href="#services">Services</a></li>
-          <li><a href="#results">Results</a></li>
+          <li><a href="#why">Why Us</a></li>
           <li><a href="#process">Process</a></li>
-          <li><a href="#investment">Investment</a></li>
           <li><a href="#testimonials">Testimonials</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#contact">Contact</a></li>
