@@ -36,7 +36,15 @@ window.addEventListener('scroll', () => {
 /* ── Mobile Menu ────────────────────────────────────── */
 const hamburger   = document.getElementById('hamburger');
 const mobileMenu  = document.getElementById('mobile-menu');
+const mobileClose = document.getElementById('mobile-close');
 const mobileLinks = mobileMenu.querySelectorAll('a');
+
+function closeMobileMenu() {
+  hamburger.classList.remove('active');
+  hamburger.setAttribute('aria-expanded', 'false');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+}
 
 hamburger.addEventListener('click', () => {
   const isOpen = mobileMenu.classList.toggle('open');
@@ -45,13 +53,15 @@ hamburger.addEventListener('click', () => {
   document.body.style.overflow = isOpen ? 'hidden' : '';
 });
 
+mobileClose.addEventListener('click', closeMobileMenu);
+
 mobileLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    hamburger.setAttribute('aria-expanded', 'false');
-    mobileMenu.classList.remove('open');
-    document.body.style.overflow = '';
-  });
+  link.addEventListener('click', closeMobileMenu);
+});
+
+// Close menu when clicking on the backdrop (outside the links / close btn)
+mobileMenu.addEventListener('click', (e) => {
+  if (e.target === mobileMenu) closeMobileMenu();
 });
 
 /* ── Theme Switcher ─────────────────────────────────── */
@@ -376,7 +386,96 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   });
 });
 
-/* ── Smooth anchor scrolling (native) ───────────────── */
+/* ── FAQ Navigation + Auto-scroll ───────────────────── */
+(function () {
+  const faqItems   = Array.from(document.querySelectorAll('.faq-item'));
+  const prevBtn    = document.getElementById('faq-prev');
+  const nextBtn    = document.getElementById('faq-next');
+  const currentEl  = document.getElementById('faq-current');
+  const totalEl    = document.getElementById('faq-total');
+  let activeIndex  = -1; // nothing open initially
+  let autoTimer    = null;
+  const AUTO_DELAY = 5000;
+
+  if (!faqItems.length || !prevBtn || !nextBtn) return;
+
+  // Initialise total count
+  if (totalEl) totalEl.textContent = faqItems.length;
+
+  function openItem(index) {
+    // Clamp
+    if (index < 0) index = faqItems.length - 1;
+    if (index >= faqItems.length) index = 0;
+    activeIndex = index;
+
+    // Close all, open target
+    faqItems.forEach((item, i) => {
+      const isTarget = i === activeIndex;
+      item.classList.toggle('open', isTarget);
+      item.querySelector('.faq-question').setAttribute('aria-expanded', String(isTarget));
+    });
+
+    // Update counter
+    if (currentEl) currentEl.textContent = activeIndex + 1;
+
+    // Scroll the opened item into view smoothly
+    faqItems[activeIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function startAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => {
+      openItem((activeIndex + 1) % faqItems.length);
+    }, AUTO_DELAY);
+  }
+
+  function resetAuto() {
+    clearInterval(autoTimer);
+    startAuto();
+  }
+
+  prevBtn.addEventListener('click', () => {
+    openItem(activeIndex <= 0 ? faqItems.length - 1 : activeIndex - 1);
+    resetAuto();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    openItem((activeIndex + 1) % faqItems.length);
+    resetAuto();
+  });
+
+  // Override the existing accordion click to keep counter in sync.
+  // Note: this listener is registered AFTER the accordion listener above,
+  // so it fires second — the class is already toggled to its new state here.
+  faqItems.forEach((item, i) => {
+    item.querySelector('.faq-question').addEventListener('click', () => {
+      // After accordion toggle: open = this item is now active, else closed
+      activeIndex = item.classList.contains('open') ? i : -1;
+      if (activeIndex >= 0 && currentEl) currentEl.textContent = activeIndex + 1;
+      resetAuto();
+    });
+  });
+
+  // Auto-start when FAQ section enters the viewport
+  const faqSection = document.getElementById('faq');
+  if (faqSection && 'IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (activeIndex < 0) openItem(0);
+          startAuto();
+        } else {
+          clearInterval(autoTimer);
+        }
+      });
+    }, { threshold: 0.2 });
+    obs.observe(faqSection);
+  } else {
+    // Fallback: just start auto immediately
+    openItem(0);
+    startAuto();
+  }
+})();
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', (e) => {
     const id     = anchor.getAttribute('href');

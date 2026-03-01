@@ -296,7 +296,7 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
 #navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 1000;
+  z-index: 1060;
   padding: 18px 0;
   transition: var(--transition);
 }
@@ -491,6 +491,64 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
   transition: color 0.22s ease;
 }
 #mobile-menu a:hover { color: var(--text-primary); }
+
+/* ── Mobile Menu Close Button ────────────────────────── */
+.mobile-close {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--border-glass);
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: background 0.22s ease, transform 0.22s ease;
+}
+.mobile-close:hover { background: rgba(255,255,255,0.16); transform: rotate(90deg); }
+.mobile-close svg   { width: 20px; height: 20px; }
+[data-theme="light"] .mobile-close { background: rgba(0,0,0,0.06); }
+[data-theme="light"] .mobile-close:hover { background: rgba(0,0,0,0.12); }
+
+/* ── FAQ Navigation ──────────────────────────────────── */
+.faq-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 28px;
+}
+.faq-nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border-glass);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease, transform 0.22s ease;
+}
+.faq-nav-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  transform: scale(1.08);
+}
+.faq-nav-btn svg { width: 18px; height: 18px; }
+.faq-counter {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  min-width: 48px;
+  text-align: center;
+}
 
 /* ══════════════════════════════════════════════════════
    HERO
@@ -1521,10 +1579,24 @@ footer {
   .footer-bottom  { flex-direction:column; align-items:flex-start; }
   #testimonials .swiper-button-prev { left: 30px; }
   #testimonials .swiper-button-next { right: 30px; left: auto; }
+  /* hero text sizing for mobile */
+  .hero-headline  { font-size: clamp(28px, 7vw, 44px); }
+  .hero-sub       { font-size: 15px; }
+  .section-header h2 { font-size: clamp(26px, 6vw, 40px); }
+  /* service/why cards on mobile */
+  .service-card, .why-item { padding: 24px 20px; }
+  /* contact info readable */
+  .contact-info-item { gap: 12px; }
+  /* better button tap targets */
+  .btn { min-height: 48px; }
 }
 @media(max-width:480px) {
   .why-grid   { grid-template-columns:1fr; }
   .hero-ctas  { flex-direction:column; }
   .hero-ctas .btn { width:100%; justify-content:center; }
   .theme-label { display:none; }
+  /* tighter nav on very small screens */
+  .nav-logo   { font-size: 22px; }
+  .theme-btn  { padding: 6px 8px; }
+  .faq-nav-btn { width: 40px; height: 40px; }
 }
