@@ -10,13 +10,14 @@
 const expoOut = (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
 
 const lenis = new Lenis({
-  duration: 1.15,
+  // Lower duration = snappier response; higher wheelMultiplier = less lag
+  duration: 0.85,
   easing: expoOut,
   orientation: 'vertical',
   gestureOrientation: 'vertical',
   smoothWheel: true,
-  wheelMultiplier: 0.90,
-  touchInertiaMultiplier: 24,
+  wheelMultiplier: 1.1,
+  touchMultiplier: 1.5,
 });
 
 // GSAP ticker is the single RAF source for Lenis.
@@ -351,10 +352,12 @@ if (typeof Swiper !== 'undefined') {
     slidesPerView: 1,
     spaceBetween: 26,
     loop: true,
-    autoplay: { delay: 4000, disableOnInteraction: false, pauseOnMouseEnter: true },
-    speed: 750,
+    autoplay: { delay: 4200, disableOnInteraction: false, pauseOnMouseEnter: true },
+    speed: 650,
     pagination: { el: '.swiper-pagination', clickable: true },
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
     centeredSlides: true,
+    grabCursor: true,
     breakpoints: {
       768:  { slidesPerView: 1.2,  spaceBetween: 26 },
       1024: { slidesPerView: 1.45, spaceBetween: 30 },
@@ -406,19 +409,62 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-/* ── Contact Form ────────────────────────────────────── */
+/* ── Contact Form → Formspree ────────────────────────── */
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const btn = contactForm.querySelector('.form-submit');
+    const btn  = contactForm.querySelector('.form-submit');
     const orig = btn.textContent;
-    btn.textContent = '✓ Message Sent!';
-    btn.style.background = 'linear-gradient(135deg,#16a34a,#15803d)';
-    setTimeout(() => {
-      btn.textContent = orig;
-      btn.style.background = '';
-      contactForm.reset();
-    }, 3000);
+
+    // Validate required fields
+    const name    = contactForm.querySelector('[name="name"]').value.trim();
+    const email   = contactForm.querySelector('[name="email"]').value.trim();
+    const message = contactForm.querySelector('[name="message"]').value.trim();
+    if (!name || !email || !message) {
+      btn.textContent = '⚠ Please fill all fields';
+      setTimeout(() => { btn.textContent = orig; }, 2500);
+      return;
+    }
+
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('https://formspree.io/f/xeelwaoq', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(contactForm),
+      });
+
+      if (res.ok) {
+        btn.textContent = '✓ Message Sent!';
+        btn.style.background = 'linear-gradient(135deg,#16a34a,#15803d)';
+        contactForm.reset();
+        setTimeout(() => {
+          btn.textContent = orig;
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 4000);
+      } else {
+        const data = await res.json().catch(() => ({}));
+        btn.textContent = data.error || '✗ Failed — Try Again';
+        btn.style.background = 'linear-gradient(135deg,#dc2626,#b91c1c)';
+        setTimeout(() => {
+          btn.textContent = orig;
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 3500);
+      }
+    } catch (err) {
+      console.warn('Contact form submission error:', err);
+      btn.textContent = '✗ Network Error — Try Again';
+      btn.style.background = 'linear-gradient(135deg,#dc2626,#b91c1c)';
+      setTimeout(() => {
+        btn.textContent = orig;
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 3500);
+    }
   });
 }

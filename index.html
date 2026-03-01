@@ -115,7 +115,8 @@
     <div class="glow-orb glow-orb-3"></div>
   </div>
 
-  <div class="container" style="position:relative;z-index:2;width:100%;">
+  <div class="container hero-container" style="position:relative;z-index:2;width:100%;">
+    <!-- Left: text -->
     <div class="hero-content">
       <div class="hero-badge">&#x2728; Premium Digital Agency &mdash; AU &middot; UK &middot; USA</div>
 
@@ -136,6 +137,63 @@
         <a href="#services" class="btn btn-outline magnetic" aria-label="See our services">
           Explore Services &rarr;
         </a>
+      </div>
+    </div>
+
+    <!-- Right: visual mockup -->
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hv-card">
+        <div class="hv-browser-bar">
+          <span class="hv-dot hv-dot-red"></span>
+          <span class="hv-dot hv-dot-yellow"></span>
+          <span class="hv-dot hv-dot-green"></span>
+          <span class="hv-url">ttdhwebsolutions.com</span>
+        </div>
+        <div class="hv-body">
+          <div class="hv-hero-strip">
+            <div class="hv-strip-line hv-line-wide"></div>
+            <div class="hv-strip-line hv-line-mid"></div>
+          </div>
+          <div class="hv-services-mini">
+            <div class="hv-service-item">
+              <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              <span>Web Dev</span>
+            </div>
+            <div class="hv-service-item">
+              <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"></rect></svg>
+              <span>Mobile App</span>
+            </div>
+            <div class="hv-service-item">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"></path></svg>
+              <span>AI Systems</span>
+            </div>
+            <div class="hv-service-item">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <span>SEO</span>
+            </div>
+          </div>
+          <div class="hv-bar-chart" aria-hidden="true">
+            <div class="hv-bar" style="height:45%"></div>
+            <div class="hv-bar" style="height:70%"></div>
+            <div class="hv-bar" style="height:55%"></div>
+            <div class="hv-bar" style="height:85%"></div>
+            <div class="hv-bar" style="height:65%"></div>
+            <div class="hv-bar" style="height:90%"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Floating feature badges -->
+      <div class="hv-badge hv-badge-1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+        AI-Powered
+      </div>
+      <div class="hv-badge hv-badge-2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        Results-Driven
+      </div>
+      <div class="hv-badge hv-badge-3">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        Fast Launch
       </div>
     </div>
   </div>
@@ -370,7 +428,7 @@
       <p>Hear directly from business owners we've had the pleasure of working with</p>
     </div>
 
-    <div class="swiper" role="region" aria-label="Testimonials carousel">
+    <div class="swiper" role="region" aria-label="Testimonials carousel" data-lenis-prevent>
       <div class="swiper-wrapper">
 
         <div class="swiper-slide">
@@ -430,6 +488,9 @@
         </div>
 
       </div>
+      <!-- Navigation buttons -->
+      <div class="swiper-button-prev" aria-label="Previous testimonial"></div>
+      <div class="swiper-button-next" aria-label="Next testimonial"></div>
       <div class="swiper-pagination" aria-label="Carousel navigation"></div>
     </div>
 
