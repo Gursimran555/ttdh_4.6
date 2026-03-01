@@ -3,29 +3,8 @@
    js/main.js
    ===================================================== */
 
-/* ── Lenis Smooth Scroll ───────────────────────────── */
-// Improved physics: expo.out gives a snappier start and
-// ultra-smooth, natural deceleration — much better than the
-// default ease curve.
-const expoOut = (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
-
-const lenis = new Lenis({
-  // Lower duration = snappier response; higher wheelMultiplier = less lag
-  duration: 0.85,
-  easing: expoOut,
-  orientation: 'vertical',
-  gestureOrientation: 'vertical',
-  smoothWheel: true,
-  wheelMultiplier: 1.1,
-  touchMultiplier: 1.5,
-});
-
-// GSAP ticker is the single RAF source for Lenis.
-// Do NOT add a separate requestAnimationFrame loop — it would
-// tick Lenis twice per frame and break wheel scrolling.
-lenis.on('scroll', () => ScrollTrigger.update());
-gsap.ticker.add((time) => { lenis.raf(time * 1000); });
-gsap.ticker.lagSmoothing(0);
+/* ── Native scroll: ScrollTrigger update on scroll ── */
+window.addEventListener('scroll', () => ScrollTrigger.update(), { passive: true });
 
 /* ── Mouse Glow Effect ─────────────────────────────── */
 const mouseGlow = document.getElementById('mouse-glow');
@@ -50,9 +29,9 @@ animateGlow();
 
 /* ── Sticky Navbar ─────────────────────────────────── */
 const navbar = document.getElementById('navbar');
-lenis.on('scroll', ({ scroll }) => {
-  navbar.classList.toggle('scrolled', scroll > 55);
-});
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 55);
+}, { passive: true });
 
 /* ── Mobile Menu ────────────────────────────────────── */
 const hamburger   = document.getElementById('hamburger');
@@ -63,7 +42,7 @@ hamburger.addEventListener('click', () => {
   const isOpen = mobileMenu.classList.toggle('open');
   hamburger.classList.toggle('active', isOpen);
   hamburger.setAttribute('aria-expanded', String(isOpen));
-  isOpen ? lenis.stop() : lenis.start();
+  document.body.style.overflow = isOpen ? 'hidden' : '';
 });
 
 mobileLinks.forEach(link => {
@@ -71,7 +50,7 @@ mobileLinks.forEach(link => {
     hamburger.classList.remove('active');
     hamburger.setAttribute('aria-expanded', 'false');
     mobileMenu.classList.remove('open');
-    lenis.start();
+    document.body.style.overflow = '';
   });
 });
 
@@ -397,14 +376,14 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   });
 });
 
-/* ── Smooth anchor scrolling ────────────────────────── */
+/* ── Smooth anchor scrolling (native) ───────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', (e) => {
     const id     = anchor.getAttribute('href');
     const target = document.querySelector(id);
     if (target) {
       e.preventDefault();
-      lenis.scrollTo(target, { duration: 1.45, easing: expoOut });
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
 });
